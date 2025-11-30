@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Custom Project Intake Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="//unpkg.com/alpinejs" defer></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display" x-data="multiStepForm()">
+    <div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden bg-background-light dark:bg-background-dark">
+        <!-- Top App Bar -->
+        <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2">
+            <button onclick="location.href='/pricing'" class="text-[#0d121b] dark:text-white flex size-12 shrink-0 items-center justify-start">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">New Project Inquiry</h1>
+        </div>
+
+        <!-- Page Indicators -->
+        <div class="flex w-full flex-row items-center justify-center gap-3 py-5 px-4">
+            <template x-for="(step, index) in steps" :key="index">
+                <div class="flex-1 h-1 rounded-full transition-all duration-300" 
+                     :class="currentStep === index ? 'bg-primary' : 'bg-primary/30'"></div>
+            </template>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 px-4">
+            <!-- Step 1: Contact Information -->
+            <div x-show="currentStep === 0" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 1: Contact Information</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Let's start with the basics. How can we reach you?</p>
+                
+                <div class="flex flex-col gap-4">
+                    <!-- Full Name -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Full Name</p>
+                            <input x-model="formData.fullName" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="Enter your full name"/>
+                        </label>
+                    </div>
+                    
+                    <!-- Company Name -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Company Name</p>
+                            <input x-model="formData.companyName" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="Enter your company name (Optional)"/>
+                        </label>
+                    </div>
+                    
+                    <!-- Work Email -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Work Email</p>
+                            <input x-model="formData.email" type="email" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="you@company.com"/>
+                        </label>
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Phone Number</p>
+                            <input x-model="formData.phone" type="tel" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="(123) 456-7890"/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Project Details -->
+            <div x-show="currentStep === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 2: Project Details</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Tell us about your project requirements.</p>
+                
+                <div class="flex flex-col gap-4">
+                    <!-- Project Type -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Project Type</p>
+                            <select x-model="formData.projectType" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal">
+                                <option value="">Select project type</option>
+                                <option value="web-app">Web Application</option>
+                                <option value="mobile-app">Mobile App</option>
+                                <option value="ecommerce">E-commerce Website</option>
+                                <option value="ai-ml">AI/ML Solution</option>
+                                <option value="consulting">Technical Consulting</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </label>
+                    </div>
+                    
+                    <!-- Budget Range -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Budget Range</p>
+                            <select x-model="formData.budget" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal">
+                                <option value="">Select budget range</option>
+                                <option value="1k-5k">$1,000 - $5,000</option>
+                                <option value="5k-15k">$5,000 - $15,000</option>
+                                <option value="15k-30k">$15,000 - $30,000</option>
+                                <option value="30k-50k">$30,000 - $50,000</option>
+                                <option value="50k+">$50,000+</option>
+                            </select>
+                        </label>
+                    </div>
+                    
+                    <!-- Timeline -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Preferred Timeline</p>
+                            <select x-model="formData.timeline" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal">
+                                <option value="">Select timeline</option>
+                                <option value="asap">ASAP</option>
+                                <option value="1-3months">1-3 months</option>
+                                <option value="3-6months">3-6 months</option>
+                                <option value="6months+">6+ months</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Project Description -->
+            <div x-show="currentStep === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 3: Project Description</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Describe your project in detail.</p>
+                
+                <div class="flex flex-col gap-4">
+                    <!-- Project Title -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Project Title</p>
+                            <input x-model="formData.projectTitle" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary h-14 placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="e.g., E-commerce Platform"/>
+                        </label>
+                    </div>
+                    
+                    <!-- Project Description -->
+                    <div class="flex max-w-[480px] flex-wrap items-end gap-4">
+                        <label class="flex flex-col min-w-40 flex-1">
+                            <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Project Description</p>
+                            <textarea x-model="formData.description" rows="5" class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border border-[#cfd7e7] dark:border-gray-700 bg-background-light dark:bg-background-dark focus:border-primary placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="Describe your project goals, features, and requirements..."></textarea>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Review & Submit -->
+            <div x-show="currentStep === 3" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
+                <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 4: Review & Submit</h2>
+                <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Review your information and submit your project inquiry.</p>
+                
+                <div class="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Full Name</p>
+                            <p class="text-[#0d121b] dark:text-white font-medium" x-text="formData.fullName || 'Not provided'"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Email</p>
+                            <p class="text-[#0d121b] dark:text-white font-medium" x-text="formData.email || 'Not provided'"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Company</p>
+                            <p class="text-[#0d121b] dark:text-white font-medium" x-text="formData.companyName || 'Not provided'"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Phone</p>
+                            <p class="text-[#0d121b] dark:text-white font-medium" x-text="formData.phone || 'Not provided'"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Project Type</p>
+                            <p class="text-[#0d121b] dark:text-white font-medium" x-text="formData.projectType || 'Not provided'"></p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Budget</p>
+                            <p class="text-[#0d121b] dark:text-white font-medium" x-text="formData.budget || 'Not provided'"></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm">Project Description</p>
+                        <p class="text-[#0d121b] dark:text-white font-medium mt-1" x-text="formData.description || 'Not provided'"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer with Navigation Buttons -->
+        <footer class="sticky bottom-0 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm p-4 pt-6 mt-8 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex gap-3">
+                <!-- Back Button (shows except on first step) -->
+                <button x-show="currentStep > 0" @click="previousStep()" class="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white font-bold py-4 px-6 rounded-xl h-14 flex items-center justify-center text-base">
+                    Back
+                </button>
+                
+                <!-- Next/Submit Button -->
+                <button x-show="currentStep < steps.length - 1" @click="nextStep()" class="flex-1 bg-primary text-white font-bold py-4 px-6 rounded-xl h-14 flex items-center justify-center text-base">
+                    Next
+                </button>
+                
+                <!-- Submit Button (shows on last step) -->
+                <button x-show="currentStep === steps.length - 1" @click="submitForm()" class="flex-1 bg-green-600 text-white font-bold py-4 px-6 rounded-xl h-14 flex items-center justify-center text-base">
+                    Submit Project
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function multiStepForm() {
+            return {
+                currentStep: 0,
+                steps: ['Contact Info', 'Project Details', 'Description', 'Review'],
+                formData: {
+                    // Step 1
+                    fullName: '',
+                    companyName: '',
+                    email: '',
+                    phone: '',
+                    
+                    // Step 2
+                    projectType: '',
+                    budget: '',
+                    timeline: '',
+                    
+                    // Step 3
+                    projectTitle: '',
+                    description: ''
+                },
+                
+                nextStep() {
+                    if (this.currentStep < this.steps.length - 1) {
+                        this.currentStep++;
+                    }
+                },
+                
+                previousStep() {
+                    if (this.currentStep > 0) {
+                        this.currentStep--;
+                    }
+                },
+                
+                submitForm() {
+                    // Here you would send the formData to your backend
+                    console.log('Submitting form:', this.formData);
+                    alert('Project inquiry submitted successfully! We\'ll contact you soon.');
+                    // You can redirect or reset the form here
+                    // location.href = '/thank-you';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pricing - Innovatech Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#135bec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101622",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d121b] dark:text-gray-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<%- include ("header") -%>
+<main class="flex-grow">
+<!-- Headline & Body Text -->
+<section class="px-4 py-8">
+<h1 class="text-[#0d121b] dark:text-white tracking-tight text-[32px] font-bold leading-tight text-center pb-3">Transparent Pricing for Innovative Solutions</h1>
+<p class="text-gray-600 dark:text-gray-400 text-base font-normal leading-normal pb-3 text-center max-w-2xl mx-auto">
+          Find the right plan for your business goals. From consulting to dedicated teams, we have you covered.
+        </p>
+</section>
+<!-- Segmented Buttons -->
+<div class="flex px-4 py-3 justify-center">
+<div class="flex h-10 w-full max-w-md items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-[0.375rem] px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-background-dark has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#0d121b] has-[:checked]:dark:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">
+<span class="truncate">Consulting</span>
+<input class="invisible w-0" name="pricing-tier" type="radio" value="Consulting"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-[0.375rem] px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-background-dark has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#0d121b] has-[:checked]:dark:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">
+<span class="truncate">Project-Based</span>
+<input checked="" class="invisible w-0" name="pricing-tier" type="radio" value="Project-Based"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-[0.375rem] px-2 has-[:checked]:bg-white has-[:checked]:dark:bg-background-dark has-[:checked]:shadow-[0_1px_3px_rgba(0,0,0,0.1)] has-[:checked]:text-[#0d121b] has-[:checked]:dark:text-white text-gray-500 dark:text-gray-400 text-sm font-medium leading-normal">
+<span class="truncate">Dedicated Team</span>
+<input class="invisible w-0" name="pricing-tier" type="radio" value="Dedicated Team"/>
+</label>
+</div>
+</div>
+<!-- Pricing Cards -->
+<section class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 px-4 py-6">
+<!-- Card 1: Consulting -->
+<div class="flex flex-1 flex-col gap-6 rounded-xl border border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark/50 p-6">
+<div class="flex flex-col gap-2">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Consulting</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">For expert guidance and strategy.</p>
+<p class="flex items-baseline gap-1.5 text-[#0d121b] dark:text-white pt-2">
+<span class="text-3xl font-black leading-tight tracking-[-0.033em]">₦30k</span>
+<span class="text-base font-medium text-gray-600 dark:text-gray-300">per session</span>
+</p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Expert tech &amp; IT consultancy
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> AI &amp; LLM Strategy
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Architectural Planning
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> EdTech Solutions
+            </div>
+</div>
+<button class="flex mt-auto w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+<span class="truncate">Get Started</span>
+</button>
+</div>
+<!-- Card 2: Project-Based (Most Popular) -->
+<div class="flex flex-1 flex-col gap-6 rounded-xl border-2 border-solid border-primary bg-white dark:bg-background-dark/50 p-6 relative">
+<p class="absolute -top-3.5 left-1/2 -translate-x-1/2 text-white text-xs font-medium leading-normal tracking-[0.015em] rounded-full bg-primary px-3 py-1.5 text-center">Most Popular</p>
+<div class="flex flex-col gap-2">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Project-Based</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">For defined projects with clear goals.</p>
+<p class="flex items-baseline gap-1.5 text-[#0d121b] dark:text-white pt-2">
+<span class="text-3xl font-black leading-tight tracking-[-0.033em]">₦400k</span>
+<span class="text-base font-medium text-gray-600 dark:text-gray-300">starts at</span>
+</p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Defined project scope
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Fixed pricing model
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Fullstack development
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Dedicated Project Manager
+            </div>
+</div>
+<button onclick="location.href='/pricing/project-based'" class="flex mt-auto w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Select Plan</span>
+</button>
+</div>
+<!-- Card 3: Dedicated Team -->
+<div class="flex flex-1 flex-col gap-6 rounded-xl border border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark/50 p-6">
+<div class="flex flex-col gap-2">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Dedicated Team</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400">For long-term and scalable products.</p>
+<p class="flex items-baseline gap-1.5 text-[#0d121b] dark:text-white pt-2">
+<span class="text-3xl font-black leading-tight tracking-[-0.033em]">Custom</span>
+<span class="text-base font-medium text-gray-600 dark:text-gray-300">for a quote</span>
+</p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Full-time developers
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Complete role flexibility
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Long-term support
+            </div>
+<div class="flex items-center gap-3 text-[13px] font-normal leading-normal text-[#0d121b] dark:text-gray-300">
+<span class="material-symbols-outlined text-primary" style="font-size: 20px;">check_circle</span> Scales with your needs
+            </div>
+</div>
+<button onclick="location.href='/quote'" class="flex mt-auto w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 dark:bg-primary/20 text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+<span class="truncate">Request Quote</span>
+</button>
+</div>
+</section>
+<!-- Custom Quote Section -->
+<section class="px-4 py-12" id="quote">
+<div class="max-w-3xl mx-auto text-center bg-white dark:bg-background-dark/50 p-8 rounded-xl border border-gray-200 dark:border-gray-800">
+<h2 class="text-2xl font-bold text-[#0d121b] dark:text-white">Have a complex project?</h2>
+<p class="mt-2 text-gray-600 dark:text-gray-400">
+            Let's build a plan together. We specialize in tailoring solutions to meet your unique business requirements.
+          </p>
+<button onclick="location.href='/quote'" class="mt-6 flex w-full max-w-xs mx-auto cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+            Request a Quote
+          </button>
+</div>
+</section>
+<!-- FAQ Accordion Section -->
+<section class="px-4 py-8">
+<div class="max-w-3xl mx-auto">
+<h2 class="text-2xl font-bold text-center text-[#0d121b] dark:text-white mb-8">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<details class="group rounded-lg bg-white dark:bg-background-dark/50 p-4 border border-gray-200 dark:border-gray-800">
+<summary class="flex cursor-pointer items-center justify-between font-semibold text-[#0d121b] dark:text-gray-200">
+                What is your billing process?
+                <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 text-gray-600 dark:text-gray-400">
+                For hourly consulting, a session takes 90 mins. For project-based work, we typically require a 50% upfront payment with the remainder due upon project completion. Dedicated team plans are billed monthly in advance.
+              </p>
+</details>
+<details class="group rounded-lg bg-white dark:bg-background-dark/50 p-4 border border-gray-200 dark:border-gray-800">
+<summary class="flex cursor-pointer items-center justify-between font-semibold text-[#0d121b] dark:text-gray-200">
+                What does a typical project timeline look like?
+                <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 text-gray-600 dark:text-gray-400">
+                Timelines vary based on project complexity. A small project might take 4-6 weeks, while larger builds can take 3-6 months or more. We provide a detailed timeline and roadmap before any project begins.
+              </p>
+</details>
+<details class="group rounded-lg bg-white dark:bg-background-dark/50 p-4 border border-gray-200 dark:border-gray-800">
+<summary class="flex cursor-pointer items-center justify-between font-semibold text-[#0d121b] dark:text-gray-200">
+                What technologies do you specialize in?
+                <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<p class="mt-4 text-gray-600 dark:text-gray-400">
+                Our team is proficient in a wide range of modern technologies, including React, Node.js, Python, TypeScript. We are also experts in developing solutions with AI and Large Language Models (LLMs).
+              </p>
+</details>
+</div>
+</div>
+</section>
+</main>
+<%- include ("footer") -%>
+</div>
+</body>
+</html>

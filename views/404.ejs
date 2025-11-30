@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>404 Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#135bec",
+            "background-light": "#f6f6f8",
+            "background-dark": "#101622",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+  </head>
+<body class="light bg-background-light dark:bg-background-dark font-display m-0 p-0" style='font-family: Inter, "Noto Sans", sans-serif;'>
+    <div class="h-screen flex flex-col items-center justify-center px-4 text-center">
+        <h1 class="text-primary dark:text-primary text-[60px] font-extrabold leading-tight mb-2">404</h1>
+        <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] mb-3">Oops! Page Not Found.</h2>
+        <p class="text-[#0d121b] dark:text-gray-300 text-base font-normal leading-normal mb-6 max-w-md">
+            It seems the page you are looking for has been moved, deleted, or you might have mistyped the URL.
+        </p>
+        <div class="flex w-full max-w-sm flex-col items-center gap-4 mb-4">
+            <button onclick="location.href='/'" class="flex h-12 w-full cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-6 text-base font-bold leading-normal text-white hover:bg-blue-700 transition-colors">
+                <span>Go to Homepage</span>
+            </button>
+        </div>
+        <div class="flex items-center justify-center gap-6">
+            <a class="text-primary dark:text-primary/90 text-sm font-semibold leading-normal hover:underline" href="/portfolio">View our Portfolio</a>
+            <a class="text-primary dark:text-primary/90 text-sm font-semibold leading-normal hover:underline" href="/contact">Contact Our Team</a>
+        </div>
+    </div>
+</body>
+</html>

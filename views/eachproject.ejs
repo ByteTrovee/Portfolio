@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title><%= title %></title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0047AB",
+                        "secondary": "#ADD8E6",
+                        "text-primary": "#333333",
+                        "text-light": "#FFFFFF",
+                        "border-color": "#E0E0E0",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<%- include ('header') -%>
+<!-- Main Content -->
+<main class="flex-1">
+<!-- Headline and Body Text -->
+<div class="p-4">
+<h1 class="text-text-primary dark:text-text-light tracking-tight text-3xl font-bold leading-tight pt-4 pb-2"><%=project.title%></h1>
+<p class="text-text-primary dark:text-gray-300 text-base font-normal leading-normal pb-3"><%=project.caseStudyExplanation%></p>
+</div>
+</div>
+<!-- Image Gallery -->
+<div class="px-4 py-6">
+<h3 class="text-2xl font-bold text-primary dark:text-secondary mb-4">Visual Showcase</h3>
+<div class="overflow-hidden rounded-xl border border-border-color dark:border-gray-800">
+<img class="w-full object-cover" data-alt="ladynmous" src="<%=project.image%>"/>
+</div>
+</div>
+<!-- Client Testimonial -->
+<div class="px-4 py-6">
+<div class="rounded-xl border border-border-color bg-secondary/30 p-6 dark:border-gray-800 dark:bg-primary/20">
+<span class="material-symbols-outlined text-primary dark:text-secondary text-4xl">format_quote</span>
+<blockquote class="mt-2 text-lg italic text-text-primary dark:text-text-light">"The platform has revolutionized how we approach teaching. Our students are more engaged than ever, and the results speak for themselves. A truly transformative solution."</blockquote>
+<cite class="mt-4 block text-right font-bold not-italic text-text-primary dark:text-gray-300">Dr. Eleanor Vance</cite>
+<p class="mt-1 block text-right text-sm text-text-primary/80 dark:text-gray-400">Head of Curriculum</p>
+</div>
+</div>
+</main>
+<!-- Sticky CTA Footer -->
+<div class="sticky bottom-0 mt-8 w-full border-t border-border-color bg-background-light p-4 dark:border-gray-800 dark:bg-background-dark">
+<button onclick="location.href='/contact'" class="w-full h-12 flex items-center justify-center rounded-lg bg-primary text-base font-bold text-text-light">Start Your Project</button>
+</div>
+</div>
+<%- include ('footer') -%>
+</body>
+</html>

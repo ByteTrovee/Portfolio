@@ -1,0 +1,145 @@
+
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+
+<%- include ("header") -%>
+
+<main class="flex-grow">
+<!-- Hero Section -->
+<div class="@container">
+<div class="flex flex-col gap-6 px-4 py-10 @[480px]:gap-8 @[864px]:flex-row @[864px]:items-center">
+<div class="flex flex-col gap-6 text-left @[480px]:min-w-[400px] @[480px]:gap-8 @[864px]:justify-center">
+<div class="flex flex-col gap-2">
+<h1 class="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em]">
+                Building digital systems that matter
+              </h1>
+<h2 class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal @[480px]:text-base @[480px]:font-normal @[480px]:leading-normal">
+                Transforming Ideas Into High-Performance Web Apps and AI Systems That Drive Real Business Growth.
+              </h2>
+</div>
+<button onclick="location.href = '/quote'" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]">
+<span class="truncate">Get a Free Quote</span>
+</button>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl @[480px]:h-auto @[480px]:min-w-[400px] @[864px]:w-full" data-alt="Abstract animation of interconnected code nodes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfKNIBo7RL11cRqpUiSy9HtaRC_5yr5w7q3QBnVtCVdCT8Ly888y9iEseU6epq4ROxKCXGah1oCX4ClFGykfinjAA-_yDS39SkC4TLgvIMgVB62-PIqdSizmOXSJ27q6FFtGvkZ75hyTZfUm6W_dy2oav52A4hQjlsKBUqIHWBvepogGjKKpL1HWYPQZ7F4F8fGXak38-HH6uk0Obm2sDejUvA23a6Y_b81YY_UfW73gDA7BiZ7vyrqlCPtlBOCjbErqa2ZRERHl4");'></div>
+</div>
+</div>
+<!-- Services Section -->
+<section class="py-10">
+<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Our Services</h2>
+<div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 p-4">
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">code</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Fullstack Development</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">End-to-end development for robust web and mobile applications.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">psychology</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">AI &amp; LLM Solutions</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Leverage cutting-edge AI to unlock new business potential.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">support_agent</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Tech &amp; IT Consultancy</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Strategic guidance to optimize your technology infrastructure.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">groups</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Dedicated Teams</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Scale your team with our expert, dedicated developers.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">school</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">EdTech Platforms</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Creating innovative and engaging learning experiences.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">integration_instructions</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Integration and API Development</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Seamlessly connect your systems and services for enhanced functionality.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">shopping_cart</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">E-commerce Solutions</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Building scalable and secure online stores to drive your sales.</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl border border-gray-200 dark:border-gray-800 p-4 bg-background-light dark:bg-background-dark hover:shadow-lg hover:border-primary/50 dark:hover:border-primary/50 transition-shadow">
+<span class="material-symbols-outlined text-primary text-4xl">auto_awesome</span>
+<div>
+<p class="text-text-light dark:text-text-dark text-base font-medium leading-normal">Product Development</p>
+<p class="text-text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">From idea to launch, we bring your product vision to life.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us Section -->
+<section class="py-10 bg-primary-light dark:bg-background-dark/50">
+<h2 class="text-text-light dark:text-text-dark text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-5 pt-5 text-center">Why Choose Us</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+<div class="text-center p-4">
+<div class="flex items-center justify-center size-16 mx-auto mb-4 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-4xl">verified_user</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">Expertise</h3>
+<p class="text-text-muted-light dark:text-muted-dark mt-2">Our team consists of highly skilled professionals with years of experience in the industry.</p>
+</div>
+<div class="text-center p-4">
+<div class="flex items-center justify-center size-16 mx-auto mb-4 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-4xl">autorenew</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">Agile Methodology</h3>
+<p class="text-text-muted-light dark:text-muted-dark mt-2">We use agile development to ensure flexibility and deliver high-quality results quickly.</p>
+</div>
+<div class="text-center p-4">
+<div class="flex items-center justify-center size-16 mx-auto mb-4 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-4xl">handshake</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">Client Success</h3>
+<p class="text-text-muted-light dark:text-muted-dark mt-2">Your success is our priority. We work closely with you to achieve your business goals.</p>
+</div>
+<div class="text-center p-4">
+<div class="flex items-center justify-center size-16 mx-auto mb-4 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-4xl">bolt</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">Fast Delivery</h3>
+<p class="text-text-muted-light dark:text-muted-dark mt-2">We deliver high-quality solutions quickly without compromising performance or reliability.</p>
+</div>
+<div class="text-center p-4">
+<div class="flex items-center justify-center size-16 mx-auto mb-4 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-4xl">attach_money</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">Affordable Pricing</h3>
+<p class="text-text-muted-light dark:text-muted-dark mt-2">We provide top-tier engineering at prices that fit your budget. With transparent pricing and flexible plans, you get premium services</p>
+</div>
+<div class="text-center p-4">
+<div class="flex items-center justify-center size-16 mx-auto mb-4 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-4xl">support_agent</span>
+</div>
+<h3 class="text-lg font-bold text-text-light dark:text-text-dark">Customer support</h3>
+<p class="text-text-muted-light dark:text-muted-dark mt-2">Our team offers responsive, dedicated support ensuring smooth communication, timely updates and assistance throughout your project lifecycle.</p>
+</div>
+</div>
+</section>
+</main>
+
+
+</div>
+
+<%- include ("footer") -%>
+
+</body>
+</html>
