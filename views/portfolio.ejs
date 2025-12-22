@@ -60,30 +60,30 @@
         },
         {
             id: 2,
-            title: 'E-Commerce Analytics Dashboard',
-            image: '/images/project2.jpg',
-            tags: ['Data Visualization', 'React', 'Node.js'],
-            description: 'Real-time analytics dashboard for e-commerce businesses with predictive sales forecasting and customer behavior insights.',
-            liveUrl: '#',
-            caseStudyUrl: '#'
+            title: 'StorxByte Broker',
+            image: '/images/WhatsApp Image 2025-12-22 at 3.17.21 AM.jpeg',
+            tags: ['Next', 'Tailwind', 'Node.js', 'MongoDB'],
+            description: 'StorxByte Broker is a full-stack cryptocurrency trading platform that allows users to trade major digital assets such as Bitcoin and Ethereum. The platform was designed with a focus on performance, scalability, and modern UI/UX principles. Built using a microservices architecture, the application ensures modularity and easier maintenance. The frontend is developed with Next.js and Tailwind CSS, delivering a fast, SEO-optimized, and responsive user interface. On the backend, it leverages Node.js and MongoDB to handle real-time transactions, user authentication, and data storage efficiently.',
+            liveUrl: 'https://staupdate-frontend.pages.dev/signup',
+            caseStudyUrl: '/case-study/2'
         },
         {
             id: 3,
-            title: 'Health & Fitness Mobile App',
-            image: '/images/project3.jpg',
-            tags: ['Mobile Development', 'Health Tech', 'UI/UX'],
-            description: 'Comprehensive fitness tracking app with AI-powered workout recommendations and nutrition planning.',
-            liveUrl: '#',
-            caseStudyUrl: '#'
+            title: 'Grademate',
+            image: '/images/grademates2.jpg.png',
+            tags: ['Flask', 'Next', 'MongoDB', 'Tailwind', 'TypeScript', 'Microservices'],
+            description: 'GradeMate is an intelligent exam grading system that automates the evaluation of student responses.It accepts multiple file formats (TXT, PDF, DOCX), parses student details and answers, compares them with an answer key,and generates accurate results instantly. Built with Flask, MongoDB, and modern web technologies (Next.js, TypeScript, Tailwind CSS, Node.js),the system is designed for scalability and seamless integration with microservices.',
+            liveUrl: 'https://grademates.netlify.app/',
+            caseStudyUrl: '/case-study/3'
         },
         {
             id: 4,
-            title: 'Smart Home IoT System',
-            image: '/images/project4.jpg',
-            tags: ['IoT', 'Embedded Systems', 'Cloud'],
-            description: 'Integrated smart home system with energy optimization and remote control capabilities.',
-            liveUrl: '#',
-            caseStudyUrl: '#'
+            title: 'Health Helper',
+            image: '/images/healthhelper.jpg.png',
+            tags: ['AI Chatbot', 'Medication Guidance', 'Digital Health', 'Wellness Platform'],
+            description: 'Health Assistant is an AI-powered healthcare chatbot designed to provide users with reliable health information, symptom insights, medication guidance, preventive care tips, and mental wellness support through natural and engaging conversations.',
+            liveUrl: 'https://health-helper.netlify.app/',
+            caseStudyUrl: '/case-study/4'
         }
     ],
     nextSlide() {
@@ -97,12 +97,12 @@
     }
 }">
     
-    <!-- Carousel -->
+    
     <div class="relative flex flex-col flex-1">
-        <!-- Slideshow Container -->
+        
         <div class="flex-1 flex items-center justify-center p-4">
             <template x-for="(project, index) in projects" :key="project.id">
-                <!-- Project Card -->
+                
                 <div 
                     x-show="currentSlide === index"
                     x-transition:enter="transition ease-in duration-100"
@@ -113,7 +113,7 @@
                     x-transition:leave-end="opacity-0 transform scale-95"
                     class="flex h-full w-full max-w-md flex-col gap-4 rounded-xl bg-white dark:bg-background-dark dark:border dark:border-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.05)]"
                 >
-                    <!-- Project Image -->
+                    
                     <div 
                         class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-t-xl flex flex-col"
                         :style="`background-image: url('${project.image}')`"
@@ -124,7 +124,7 @@
                         <div>
                             <h2 class="text-[#0d121b] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em] mb-2" x-text="project.title"></h2>
                             
-                            <!-- Tags -->
+                            
                             <div class="flex gap-2 mb-3 flex-wrap">
                                 <template x-for="tag in project.tags" :key="tag">
                                     <div class="flex h-7 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary/10 px-3">
@@ -136,7 +136,7 @@
                             <p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-relaxed" x-text="project.description"></p>
                         </div>
                         
-                        <!-- Button Group -->
+                        
                         <div class="flex flex-col sm:flex-row gap-3">
                             <a 
                                 :href="project.liveUrl" 
@@ -156,7 +156,7 @@
             </template>
         </div>
         
-        <!-- Carousel Navigation -->
+        
         <div class="absolute inset-0 flex items-center justify-between px-2 pointer-events-none">
             <button 
                 @click="prevSlide()"
@@ -173,7 +173,7 @@
         </div>
     </div>
     
-    <!-- Page Indicators -->
+    
     <div class="flex w-full flex-row items-center justify-center gap-3 py-5">
         <template x-for="(project, index) in projects" :key="project.id">
             <button 
@@ -185,7 +185,7 @@
     </div>
 </main>
 
-<!-- Bottom Spacing -->
+
 <div class="h-5 bg-background-light dark:bg-background-dark"></div>
 </div>
 

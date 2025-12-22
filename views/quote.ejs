@@ -44,7 +44,6 @@
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-[#1A1A1A] dark:text-gray-200">
 <div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
-<!-- Top App Bar -->
  <%- include ("header") -%>
 <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
 <h1 class="text-[#1A1A1A] dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Request a Quote</h1>
@@ -53,14 +52,14 @@
 <p class="text-center text-gray-600 dark:text-gray-400 text-sm">Tell us about your project, and we'll get back to you with an estimate within 24 hours.</p>
 </div>
 <div class="flex flex-col gap-8 p-4">
-<!-- Step 1: Your Project -->
+
 <section class="flex flex-col gap-4">
-<!-- Progress Bar -->
+
 <div class="flex flex-col gap-2">
 <p class="text-base font-medium leading-normal text-[#1A1A1A] dark:text-gray-200">Step 1: Your Project</p>
 <div class="w-full rounded bg-gray-200 dark:bg-gray-700"><div class="h-2 rounded bg-primary" style="width: 33%;"></div></div>
 </div>
-<!-- Project Type Dropdown -->
+
 <label class="flex flex-col min-w-40 flex-1">
 <p class="text-base font-medium leading-normal pb-2 text-[#1A1A1A] dark:text-gray-200">Project Type</p>
 <select class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1A1A1A] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary dark:focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal">
@@ -72,19 +71,19 @@
 <option value="consultancy">IT Consultancy</option>
 </select>
 </label>
-<!-- Project Description Textarea -->
+
 <label class="flex flex-col min-w-40 flex-1">
 <p class="text-base font-medium leading-normal pb-2 text-[#1A1A1A] dark:text-gray-200">Project Description</p>
 <textarea class="form-textarea flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1A1A1A] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary dark:focus:border-primary min-h-36 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="Tell us more about what you want to build..."></textarea>
 </label>
 </section>
-<!-- Step 2: Scope & Timeline (Example) - Not building multi-step logic, just visual representation -->
+
 <section class="flex flex-col gap-4">
 <div class="flex flex-col gap-2">
 <p class="text-base font-medium leading-normal text-[#1A1A1A] dark:text-gray-200">Step 2: Scope &amp; Timeline</p>
 <div class="w-full rounded bg-gray-200 dark:bg-gray-700"><div class="h-2 rounded bg-primary" style="width: 66%;"></div></div>
 </div>
-<!-- Budget Range -->
+
 <label class="flex flex-col min-w-40 flex-1">
 <p class="text-base font-medium leading-normal pb-2 text-[#1A1A1A] dark:text-gray-200">Estimated Budget</p>
 <select class="form-select flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1A1A1A] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary dark:focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal">
@@ -95,7 +94,7 @@
 <option value="50k+">$50,000+</option>
 </select>
 </label>
-<!-- Timeline Slider -->
+
 <div class="flex flex-col gap-2">
 <label class="text-base font-medium leading-normal text-[#1A1A1A] dark:text-gray-200" for="timeline-range">Desired Timeline</label>
 <input class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary" id="timeline-range" max="4" min="1" type="range" value="2"/>
@@ -107,23 +106,23 @@
 </div>
 </div>
 </section>
-<!-- Step 3: Contact Information (Example) -->
+
 <section class="flex flex-col gap-4">
 <div class="flex flex-col gap-2">
 <p class="text-base font-medium leading-normal text-[#1A1A1A] dark:text-gray-200">Step 3: Your Contact Info</p>
 <div class="w-full rounded bg-gray-200 dark:bg-gray-700"><div class="h-2 rounded bg-primary" style="width: 100%;"></div></div>
 </div>
-<!-- Full Name -->
+
 <label class="flex flex-col min-w-40 flex-1">
 <p class="text-base font-medium leading-normal pb-2 text-[#1A1A1A] dark:text-gray-200">Full Name</p>
 <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1A1A1A] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary dark:focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="John Doe" type="text"/>
 </label>
-<!-- Work Email -->
+
 <label class="flex flex-col min-w-40 flex-1">
 <p class="text-base font-medium leading-normal pb-2 text-[#1A1A1A] dark:text-gray-200">Work Email</p>
 <input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#1A1A1A] dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-gray-300 dark:border-gray-600 bg-background-light dark:bg-background-dark focus:border-primary dark:focus:border-primary h-14 placeholder:text-gray-500 dark:placeholder:text-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="you@company.com" type="email"/>
 </label>
-<!-- Company Name -->
+
 <label class="flex flex-col min-w-40 flex-1">
 <div class="flex justify-between items-baseline pb-2">
 <p class="text-base font-medium leading-normal text-[#1A1A1A] dark:text-gray-200">Company Name</p>
@@ -133,14 +132,14 @@
 </label>
 </section>
 </div>
-<!-- CTA and Privacy Policy -->
+
 <div class="sticky bottom-0 p-4 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-700">
 <button class="w-full bg-primary text-white font-bold py-4 px-4 rounded-lg text-lg flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors">
                 Get My Quote
             </button>
 <p class="text-xs text-gray-500 dark:text-gray-400 mt-3 text-center">By submitting, you agree to our <a class="text-primary underline" href="#">Privacy Policy</a>.</p>
 </div>
-<!-- Confirmation Modal (hidden by default) -->
+
 <div class="fixed inset-0 bg-black/50 dark:bg-black/70 flex items-center justify-center p-4 z-50 hidden">
 <div class="bg-background-light dark:bg-background-dark rounded-xl p-8 max-w-sm w-full text-center flex flex-col items-center gap-4">
 <div class="bg-green-100 dark:bg-green-900/50 rounded-full p-3">

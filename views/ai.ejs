@@ -3,7 +3,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>AI Services - Tech Solutions Inc.</title>
+<title>AI Services</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
@@ -48,7 +48,6 @@
 <body class="bg-background-light dark:bg-background-dark font-display text-text-primary dark:text-gray-200">
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 <%- include ("header") -%>
-<!-- Hero Section -->
 <div class="@container">
 <div class="@[480px]:p-4">
 <div class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 items-center justify-center p-4" data-alt="Abstract blue and white digital network pattern" style='background-image: linear-gradient(rgba(0, 74, 173, 0.6) 0%, rgba(0, 20, 46, 0.8) 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuClcuHS1Sd5tTQoUW3Y2nYBi_VlJhwYkNCVMpjacX_sfzDlZdgN4pKVFFnmFTkjsntu03-CVWcePYHSYgIs4wTFOxYQiGEPQlR3tYorAsx3mti9PgO-Rdz2EHw2qgSZb_zGHTZcEVQrNM7UcJe3_npWdnbH0pXs-GStkEOSpsuByQH9tnFE-gMkrMxX7ownaEw35DMFzMPsz4qtd6nimMkzq0m7nnO8GzYv6nvxbIafDFa2DkHbFzBd3iT_gpLNQJ8DWahMLQTIca0");'>
@@ -63,9 +62,7 @@
 </div>
 </div>
 </div>
-<!-- Section Header: Our AI Services -->
 <h2 class="text-text-primary dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-8">Our AI Services</h2>
-<!-- Text Grid: Services -->
 <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
 <div class="flex flex-1 gap-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-background-light dark:bg-background-dark p-4 flex-col">
 <div class="text-primary dark:text-accent">
@@ -95,7 +92,7 @@
 </div>
 </div>
 </div>
-<!-- Tabs: Solutions Showcase -->
+
 <div class="pt-5" x-data="{ activeTab: 'solutions' }">
     <div class="flex border-b border-gray-200 dark:border-gray-700 px-4 justify-between">
         <a class="flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 flex-1 cursor-pointer" 
@@ -115,9 +112,9 @@
         </a>
     </div>
 
-    <!-- Tab Content -->
+    
     <div class="tab-content">
-        <!-- Solutions Tab -->
+        
         <div x-show="activeTab === 'solutions'">
             <div class="p-4 flex flex-col gap-4">
                 <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-secondary/30 dark:bg-background-dark/50 overflow-hidden">
@@ -141,7 +138,7 @@
             </div>
         </div>
 
-        <!-- Case Studies Tab -->
+        
         <div x-show="activeTab === 'casestudies'">
             <div class="p-4 flex flex-col gap-4">
                 <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-secondary/30 dark:bg-background-dark/50 overflow-hidden">
@@ -165,11 +162,11 @@
             </div>
         </div>
 
-        <!-- Our Tech Tab -->
+        
         <div x-show="activeTab === 'tech'">
             <div class="p-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Frontend Technologies -->
+                    
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
                         <h3 class="font-bold text-lg text-text-primary dark:text-white mb-4">Frontend Technologies</h3>
                         <div class="flex flex-wrap gap-2">
@@ -181,7 +178,7 @@
                         </div>
                     </div>
 
-                    <!-- Backend Technologies -->
+                    
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
                         <h3 class="font-bold text-lg text-text-primary dark:text-white mb-4">Backend Technologies</h3>
                         <div class="flex flex-wrap gap-2">
@@ -193,7 +190,7 @@
                         </div>
                     </div>
 
-                    <!-- AI & Machine Learning -->
+                    
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
                         <h3 class="font-bold text-lg text-text-primary dark:text-white mb-4">AI & Machine Learning</h3>
                         <div class="flex flex-wrap gap-2">
@@ -205,7 +202,7 @@
                         </div>
                     </div>
 
-                    <!-- DevOps & Cloud -->
+                    
                     <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm">
                         <h3 class="font-bold text-lg text-text-primary dark:text-white mb-4">DevOps & Cloud</h3>
                         <div class="flex flex-wrap gap-2">
@@ -221,7 +218,7 @@
         </div>
     </div>
 </div>
-<!-- Accordion Section: Why Choose Us -->
+
 <div class="p-4 pt-4">
 <h2 class="text-text-primary dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-4">Why Choose Us</h2>
 <div class="space-y-3">
@@ -254,14 +251,14 @@
 </details>
 </div>
 </div>
-<!-- CTA Section -->
+
 <div class="p-4 pt-8 pb-24">
 <div class="flex flex-col gap-4 text-center items-center justify-center p-6 rounded-xl bg-secondary dark:bg-gray-800/50">
 <h2 class="text-text-primary dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Ready to Innovate?</h2>
 <p class="text-gray-600 dark:text-gray-300 text-base font-normal leading-normal">Let's discuss how our AI solutions can revolutionize your business. Get in touch for a free consultation.</p>
 </div>
 </div>
-<!-- Sticky CTA Button -->
+
 <div class="sticky bottom-0 left-0 right-0 p-4 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800">
 <button onclick="location.href='/contact'" class="w-full flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] mx-auto">
 <span class="truncate">Start Your AI Project</span>

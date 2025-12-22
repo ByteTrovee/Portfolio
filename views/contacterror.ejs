@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! Something Went Wrong | ByteTrovee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1c1917 0%, #2a2522 100%);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 dark:text-gray-100">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4">
+        <div class="max-w-md w-full text-center">
+            <!-- Error Icon -->
+            <div class="mx-auto w-24 h-24 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mb-8">
+                <span class="material-symbols-outlined text-red-600 dark:text-red-400 text-5xl">
+                    error
+                </span>
+            </div>
+            
+            <!-- Error Message -->
+            <h1 class="text-3xl font-bold mb-4">Oops! Something Went Wrong 😔</h1>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg mb-8">
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-4">
+                    <p class="text-red-700 dark:text-red-300 font-medium">
+                        <%- errorMessage || 'We encountered an error while sending your message.' %>
+                    </p>
+                </div>
+                
+                <p class="text-gray-600 dark:text-gray-400 mb-6">
+                    Don't worry! There are a few ways you can still reach us:
+                </p>
+                
+                <!-- Alternative Contact Methods -->
+                <div class="space-y-4">
+                    <a href="mailto:contact@bytrovee.com" 
+                       class="flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-lg transition-colors">
+                        <span class="material-symbols-outlined mr-2">mail</span>
+                        Email us directly at: contact@bytrovee.com
+                    </a>
+                    
+                    <a href="tel:+1234567890"
+                       class="flex items-center justify-center bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 p-3 rounded-lg transition-colors">
+                        <span class="material-symbols-outlined mr-2">call</span>
+                        Call us: +1 (234) 567-890
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Try Again Button -->
+            <div class="space-y-4">
+                <button onclick="window.history.back()" 
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined mr-2">arrow_back</span>
+                    Go Back & Try Again
+                </button>
+                
+                <a href="/" 
+                   class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 font-medium">
+                    <span class="material-symbols-outlined mr-1">home</span>
+                    Return to Homepage
+                </a>
+            </div>
+            
+            <!-- Technical Details (for debugging) -->
+            <% if (process.env.NODE_ENV === 'development' && errorDetails) { %>
+            <div class="mt-8 p-4 bg-gray-100 dark:bg-gray-900 rounded-lg text-left">
+                <p class="text-sm font-mono text-gray-500 dark:text-gray-400">
+                    Technical details: <%- errorDetails %>
+                </p>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

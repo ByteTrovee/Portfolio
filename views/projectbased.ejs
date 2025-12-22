@@ -50,7 +50,7 @@
   </head>
 <body class="bg-background-light dark:bg-background-dark font-display" x-data="multiStepForm()">
     <div class="relative mx-auto flex h-auto min-h-screen w-full max-w-md flex-col overflow-x-hidden bg-background-light dark:bg-background-dark">
-        <!-- Top App Bar -->
+    
         <div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2">
             <button onclick="location.href='/pricing'" class="text-[#0d121b] dark:text-white flex size-12 shrink-0 items-center justify-start">
                 <span class="material-symbols-outlined">arrow_back</span>
@@ -58,7 +58,7 @@
             <h1 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">New Project Inquiry</h1>
         </div>
 
-        <!-- Page Indicators -->
+    
         <div class="flex w-full flex-row items-center justify-center gap-3 py-5 px-4">
             <template x-for="(step, index) in steps" :key="index">
                 <div class="flex-1 h-1 rounded-full transition-all duration-300" 
@@ -66,15 +66,14 @@
             </template>
         </div>
 
-        <!-- Main Content -->
         <main class="flex-1 px-4">
-            <!-- Step 1: Contact Information -->
+
             <div x-show="currentStep === 0" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
                 <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 1: Contact Information</h2>
                 <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Let's start with the basics. How can we reach you?</p>
                 
                 <div class="flex flex-col gap-4">
-                    <!-- Full Name -->
+
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Full Name</p>
@@ -82,7 +81,7 @@
                         </label>
                     </div>
                     
-                    <!-- Company Name -->
+
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Company Name</p>
@@ -90,7 +89,7 @@
                         </label>
                     </div>
                     
-                    <!-- Work Email -->
+        
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Work Email</p>
@@ -98,7 +97,7 @@
                         </label>
                     </div>
                     
-                    <!-- Phone Number -->
+
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Phone Number</p>
@@ -108,13 +107,13 @@
                 </div>
             </div>
 
-            <!-- Step 2: Project Details -->
+
             <div x-show="currentStep === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
                 <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 2: Project Details</h2>
                 <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Tell us about your project requirements.</p>
                 
                 <div class="flex flex-col gap-4">
-                    <!-- Project Type -->
+
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Project Type</p>
@@ -130,7 +129,7 @@
                         </label>
                     </div>
                     
-                    <!-- Budget Range -->
+
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Budget Range</p>
@@ -145,7 +144,7 @@
                         </label>
                     </div>
                     
-                    <!-- Timeline -->
+    
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Preferred Timeline</p>
@@ -162,13 +161,13 @@
                 </div>
             </div>
 
-            <!-- Step 3: Project Description -->
+
             <div x-show="currentStep === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
                 <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 3: Project Description</h2>
                 <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Describe your project in detail.</p>
                 
                 <div class="flex flex-col gap-4">
-                    <!-- Project Title -->
+
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Project Title</p>
@@ -176,7 +175,6 @@
                         </label>
                     </div>
                     
-                    <!-- Project Description -->
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#0d121b] dark:text-gray-200 text-base font-medium leading-normal pb-2">Project Description</p>
@@ -186,7 +184,6 @@
                 </div>
             </div>
 
-            <!-- Step 4: Review & Submit -->
             <div x-show="currentStep === 3" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-x-4" x-transition:enter-end="opacity-100 transform translate-x-0">
                 <h2 class="text-[#0d121b] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] pb-3 pt-5">Step 4: Review & Submit</h2>
                 <p class="text-gray-500 dark:text-gray-400 text-base mb-6">Review your information and submit your project inquiry.</p>
@@ -226,20 +223,17 @@
             </div>
         </main>
 
-        <!-- Footer with Navigation Buttons -->
         <footer class="sticky bottom-0 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm p-4 pt-6 mt-8 border-t border-gray-200 dark:border-gray-800">
             <div class="flex gap-3">
-                <!-- Back Button (shows except on first step) -->
+
                 <button x-show="currentStep > 0" @click="previousStep()" class="flex-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white font-bold py-4 px-6 rounded-xl h-14 flex items-center justify-center text-base">
                     Back
                 </button>
                 
-                <!-- Next/Submit Button -->
                 <button x-show="currentStep < steps.length - 1" @click="nextStep()" class="flex-1 bg-primary text-white font-bold py-4 px-6 rounded-xl h-14 flex items-center justify-center text-base">
                     Next
                 </button>
                 
-                <!-- Submit Button (shows on last step) -->
                 <button x-show="currentStep === steps.length - 1" @click="submitForm()" class="flex-1 bg-green-600 text-white font-bold py-4 px-6 rounded-xl h-14 flex items-center justify-center text-base">
                     Submit Project
                 </button>
@@ -253,18 +247,15 @@
                 currentStep: 0,
                 steps: ['Contact Info', 'Project Details', 'Description', 'Review'],
                 formData: {
-                    // Step 1
                     fullName: '',
                     companyName: '',
                     email: '',
                     phone: '',
                     
-                    // Step 2
                     projectType: '',
                     budget: '',
                     timeline: '',
-                    
-                    // Step 3
+                
                     projectTitle: '',
                     description: ''
                 },
@@ -282,10 +273,9 @@
                 },
                 
                 submitForm() {
-                    // Here you would send the formData to your backend
+
                     console.log('Submitting form:', this.formData);
                     alert('Project inquiry submitted successfully! We\'ll contact you soon.');
-                    // You can redirect or reset the form here
                     // location.href = '/thank-you';
                 }
             }

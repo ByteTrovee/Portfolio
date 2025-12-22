@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Sent Successfully | ByteTrovee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f6f6f8 0%, #eef2ff 100%);
+        }
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #101622 0%, #1a1f3a 100%);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-900 dark:text-gray-100">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4">
+        <div class="max-w-md w-full text-center">
+            <!-- Success Icon -->
+            <div class="mx-auto w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mb-8">
+                <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-5xl">
+                    check_circle
+                </span>
+            </div>
+            
+            <!-- Success Message -->
+            <h1 class="text-3xl font-bold mb-4">Message Sent Successfully! 🎉</h1>
+            <p class="text-gray-600 dark:text-gray-400 mb-8 text-lg">
+                Thank you for contacting us! We've received your message and will get back to you within 24-48 hours.
+            </p>
+            
+            <!-- Details -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg mb-8">
+                <h2 class="text-xl font-semibold mb-4">What happens next?</h2>
+                <ul class="text-left space-y-3 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-green-500 mr-2 mt-1">done</span>
+                        <span>We'll review your message and requirements</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-green-500 mr-2 mt-1">schedule</span>
+                        <span>Our team will contact you within 24 hours</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="material-symbols-outlined text-green-500 mr-2 mt-1">description</span>
+                        <span>You'll receive a detailed proposal based on your requirements</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="/contact" class="flex-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined mr-2">mail</span>
+                    Send Another Message
+                </a>
+                <a href="/" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center justify-center">
+                    <span class="material-symbols-outlined mr-2">home</span>
+                    Back to Home
+                </a>
+            </div>
+            
+            <!-- Portfolio Link -->
+            <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                <p class="text-gray-500 dark:text-gray-400 mb-2">While you wait, explore our work</p>
+                <a href="/portfolio" class="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">
+                    <span class="material-symbols-outlined mr-1">arrow_forward</span>
+                    View Our Portfolio
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
