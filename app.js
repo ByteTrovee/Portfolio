@@ -97,7 +97,7 @@ app.post('/contact', async (req, res) => {
         // Create transporter
         const transporter = nodemailer.createTransport({
             host: process.env.EMAIL_HOST,
-            port: process.env.EMAIL_PORT || 587,
+            port: process.env.EMAIL_PORT || 465,
             secure: true, // CRITICAL: use SSL
             auth: {
                 user: process.env.EMAIL_USER,
