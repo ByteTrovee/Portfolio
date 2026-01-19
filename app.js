@@ -96,7 +96,9 @@ app.post('/contact', async (req, res) => {
 
         // Create transporter
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: process.env.EMAIL_HOST,
+            port: process.env.EMAIL_PORT || 465,
+            secure: true, // CRITICAL: use SSL
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.EMAIL_PASS
