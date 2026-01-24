@@ -166,169 +166,20 @@ app.get('/contact/error', (req, res) => {
 });
 
 app.get('/quote', function(req, res){
-    res.render('quote');
+    res.render('quote'), {
+        siteName: 'ByteTrovee',
+        supportEmail: 'hello@bytetrovee.com',
+    
+        emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY,
+        emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
+        emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
+    };
 });
 
 // Quote form submission route
 app.post('/quote', async (req, res) => {
     console.log('📋 Quote form submitted:', req.body);
     
-    try {
-        const { 
-            projectType, 
-            description, 
-            budget, 
-            timeline, 
-            name, 
-            email, 
-            company 
-        } = req.body;
-
-        // Validation
-        if (!projectType || !description || !budget || !name || !email) {
-            console.log('❌ Validation failed');
-            return res.redirect('/quote?error=' + 
-                encodeURIComponent('Please fill in all required fields'));
-        }
-
-        // Check environment variables
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            return res.redirect('/quote?error=' + 
-                encodeURIComponent('Service temporarily unavailable'));
-        }
-
-        // Create transporter
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-
-        // Get timeline label from value
-        const timelineLabels = ['1-3 Months', '3-6 Months', '6-9 Months', '9+ Months'];
-        const timelineLabel = timelineLabels[parseInt(timeline) - 1] || timeline;
-
-        // Format the quote email
-        const mailOptions = {
-            from: `"${name}" <${email}>`,
-            to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
-            subject: `💰 New Quote Request: ${projectType}`,
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #135bec; border-bottom: 2px solid #135bec; padding-bottom: 10px;">📋 New Quote Request</h2>
-                    
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="color: #333; margin-bottom: 15px;">👤 Client Information</h3>
-                        <p><strong>Name:</strong> ${name}</p>
-                        <p><strong>Email:</strong> ${email}</p>
-                        <p><strong>Company:</strong> ${company || 'Not provided'}</p>
-                    </div>
-
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="color: #333; margin-bottom: 15px;">📊 Project Details</h3>
-                        <p><strong>Project Type:</strong> ${projectType}</p>
-                        <p><strong>Budget Range:</strong> ${budget}</p>
-                        <p><strong>Timeline:</strong> ${timelineLabel}</p>
-                    </div>
-
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="color: #333; margin-bottom: 15px;">📝 Project Description</h3>
-                        <div style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #135bec;">
-                            ${description.replace(/\n/g, '<br>')}
-                        </div>
-                    </div>
-
-                    <p style="color: #666; font-size: 12px; margin-top: 20px; text-align: center;">
-                        This quote request was submitted from your website quote form.
-                    </p>
-                </div>
-            `,
-            text: `
-                NEW QUOTE REQUEST
-                =================
-                
-                CLIENT INFORMATION
-                -----------------
-                Name: ${name}
-                Email: ${email}
-                Company: ${company || 'Not provided'}
-                
-                PROJECT DETAILS
-                --------------
-                Project Type: ${projectType}
-                Budget Range: ${budget}
-                Timeline: ${timelineLabel}
-                
-                PROJECT DESCRIPTION
-                ------------------
-                ${description}
-                
-                =================
-                Submitted: ${new Date().toLocaleString()}
-            `
-        };
-
-        // Send email
-        await transporter.sendMail(mailOptions);
-        console.log('✅ Quote email sent successfully');
-
-        // Send confirmation email to client
-        const clientMailOptions = {
-            from: process.env.CONTACT_EMAIL,
-            to: email,
-            subject: '✅ Quote Request Received - ByteTrovee',
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #135bec;">Thank You for Your Quote Request!</h2>
-                    
-                    <p>Hi <strong>${name}</strong>,</p>
-                    
-                    <p>We've received your quote request for <strong>${projectType}</strong> and are excited to help bring your project to life.</p>
-
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                        <h3 style="color: #333; margin-bottom: 10px;">📋 Request Summary</h3>
-                        <p><strong>Project Type:</strong> ${projectType}</p>
-                        <p><strong>Budget Range:</strong> ${budget}</p>
-                        <p><strong>Timeline:</strong> ${timelineLabel}</p>
-                    </div>
-
-                    <p><strong>What happens next:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Our team will review your requirements within 24 hours</li>
-                        <li>We'll contact you to schedule a discovery call</li>
-                        <li>You'll receive a detailed proposal with timeline and cost breakdown</li>
-                    </ul>
-
-                    <p>In the meantime, you can explore our <a href="https://bytrovee.com/portfolio" style="color: #135bec;">portfolio</a> to see similar projects we've delivered.</p>
-
-                    <p>Best regards,<br>
-                    <strong>The ByteTrovee Team</strong></p>
-                </div>
-            `
-        };
-
-        await transporter.sendMail(clientMailOptions);
-        console.log('✅ Confirmation email sent to client');
-
-        // Redirect to success page
-        res.redirect('/quote/success');
-
-    } catch (error) {
-        console.error('❌ Quote form error:', error.message);
-        
-        let errorMessage = 'Something went wrong. Please try again later.';
-        
-        if (error.code === 'EAUTH') {
-            errorMessage = 'Email authentication failed.';
-        } else if (error.message.includes('Invalid login')) {
-            errorMessage = 'Invalid email credentials.';
-        }
-        
-        // Redirect to error page
-        res.redirect('/quote/error?message=' + encodeURIComponent(errorMessage));
-    }
 });
 
 // Quote success page

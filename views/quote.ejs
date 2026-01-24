@@ -4,6 +4,7 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Request a Custom Quote</title>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -57,7 +58,7 @@
         </div>
 
         <!-- Quote Form -->
-        <form method="POST" action="/quote" class="flex flex-col gap-8 p-4 pb-24">
+        <form id="quoteForm" method="POST" action="/quote" class="flex flex-col gap-8 p-4 pb-24">
             
             <!-- Step 1: Your Project -->
             <section class="flex flex-col gap-4">
@@ -281,5 +282,30 @@
             color: #ef4444;
         }
     </style>
+
+<script>
+    
+    const EMAILJS_CONFIG = {
+        publicKey: '<%= emailjsPublicKey %>',
+        serviceId: '<%= emailjsServiceId %>',
+        templateId: '<%= emailjsTemplateId %>'
+    };
+    
+    emailjs.init(EMAILJS_CONFIG.publicKey);
+    
+    document.getElementById('quoteForm').onsubmit = async (e) => {
+        e.preventDefault();
+        const formData = Object.fromEntries(new FormData(e.target));
+        
+        await emailjs.send(
+            EMAILJS_CONFIG.serviceId,
+            EMAILJS_CONFIG.templateId,
+            formData
+        );
+        
+        // Your success logic...
+    };
+</script>
+
 </body>
 </html>
