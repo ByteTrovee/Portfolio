@@ -166,14 +166,13 @@ app.get('/contact/error', (req, res) => {
 });
 
 app.get('/quote', function(req, res){
-    res.render('quote'), {
+    res.render('quote', {  // <-- FIXED: Remove the ) after 'quote'
         siteName: 'ByteTrovee',
-        supportEmail: 'hello@bytetrovee.com',
-    
+        supportEmail: 'bytetrovee@gmail.com',
         emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY,
         emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
         emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
-    };
+    });  // <-- Closing ) goes HERE
 });
 
 // Quote form submission route
