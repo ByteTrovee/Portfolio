@@ -303,12 +303,12 @@
                     );
                     
                     // Success - redirect or show message
-                    window.location.href = '/success';
+                    window.location.href = '/quote-success';
                     
                 } catch (error) {
                     console.error('Email failed:', error);
                     // Handle error - show message or redirect
-                    window.location.href = '/error';
+                    window.location.href = '/quote/error';
                 }
             };
         }
