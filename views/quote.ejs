@@ -284,28 +284,35 @@
     </style>
 
 <script>
-    
-    const EMAILJS_CONFIG = {
-        publicKey: '<%= emailjsPublicKey %>',
-        serviceId: '<%= emailjsServiceId %>',
-        templateId: '<%= emailjsTemplateId %>'
-    };
-    
-    emailjs.init(EMAILJS_CONFIG.publicKey);
-    
-    document.getElementById('quoteForm').onsubmit = async (e) => {
-        e.preventDefault();
-        const formData = Object.fromEntries(new FormData(e.target));
-        
-        await emailjs.send(
-            EMAILJS_CONFIG.serviceId,
-            EMAILJS_CONFIG.templateId,
-            formData
-        );
-        
-        // Your success logic...
-    };
-</script>
+        // Safely initialize - check if key exists
+        const publicKey = '<%= emailjsPublicKey %>';
+        if (!publicKey) {
+            console.error('EmailJS Public Key is not configured');
+            // Optionally disable form submission
+        } else {
+            emailjs.init(publicKey);
+            
+            document.getElementById('quoteForm').onsubmit = async (e) => {
+                e.preventDefault();
+                
+                try {
+                    await emailjs.send(
+                        '<%= emailjsServiceId %>',
+                        '<%= emailjsTemplateId %>',
+                        Object.fromEntries(new FormData(e.target))
+                    );
+                    
+                    // Success - redirect or show message
+                    window.location.href = '/success';
+                    
+                } catch (error) {
+                    console.error('Email failed:', error);
+                    // Handle error - show message or redirect
+                    window.location.href = '/error';
+                }
+            };
+        }
+    </script>
 
 </body>
 </html>
