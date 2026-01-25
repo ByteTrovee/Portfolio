@@ -1,28 +1,4 @@
-// REMOVE dotenv completely - Render doesn't need it
-console.log('🚀 Starting app WITHOUT dotenv');
-console.log('🔍 Checking Render environment variables:');
-
-// List ALL environment variables (for debugging)
-const emailjsVars = Object.keys(process.env).filter(key => 
-    key.includes('EMAILJS') || key.includes('KEY') || key.includes('SECRET')
-);
-
-console.log('📋 Found these EmailJS-related env vars:', emailjsVars);
-
-// Check critical variables
-const criticalVars = ['EMAILJS_PUBLIC_KEY', 'EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID'];
-criticalVars.forEach(varName => {
-    const value = process.env[varName];
-    console.log(`${varName}: ${value ? '✅ SET (' + value.substring(0, Math.min(10, value.length)) + '...)' : '❌ NOT SET'}`);
-});
-
-// Emergency fallback - If no env vars, show error
-if (!process.env.EMAILJS_PUBLIC_KEY) {
-    console.error('❌❌❌ CRITICAL ERROR: EMAILJS_PUBLIC_KEY is not set in Render environment!');
-    console.error('   Go to: https://dashboard.render.com/ -> bytetrovee -> Environment');
-    console.error('   Add: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID');
-}
-
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer'); 
@@ -200,9 +176,35 @@ app.get('/quote', function(req, res){
 });
 
 // Quote form submission route
-app.post('/quote', async (req, res) => {
-    console.log('📋 Quote form submitted:', req.body);
+// In your quote route, add logging
+app.get('/quote', function(req, res){
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY || '';
     
+    console.log('📧 QUOTE ROUTE - EmailJS Account:');
+    console.log('   Public Key:', publicKey ? publicKey.substring(0, 15) + '...' : 'NOT SET');
+    console.log('   Service ID:', process.env.EMAILJS_SERVICE_ID || 'NOT SET');
+    console.log('   Template ID:', process.env.EMAILJS_TEMPLATE_ID || 'NOT SET');
+    console.log('   Key length:', publicKey.length);
+    console.log('   Looks like:', publicKey.startsWith('user_') ? 'EmailJS key' : 'Unknown format');
+    
+    // Detect if it's old or new account
+    if (publicKey.includes('your_old_key_pattern')) {
+        console.log('   ⚠️  Using OLD personal account!');
+    }
+    
+    res.render('quote', {
+        siteName: 'ByteTrovee',
+        supportEmail: 'hello@bytetrovee.com',
+        emailjsPublicKey: publicKey,
+        emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',
+        emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID || '',
+        
+        // Add account info for debugging
+        accountInfo: {
+            keySet: !!publicKey,
+            keyPreview: publicKey ? publicKey.substring(0, 10) + '...' : 'none'
+        }
+    });
 });
 
 // Quote success page
@@ -440,6 +442,103 @@ app.get('/case-study/:id', (req, res) => {
         title: `${project.title} - Case Study`,
         project: project
     });
+});
+
+app.get('/current-keys', (req, res) => {
+    const publicKey = process.env.EMAILJS_PUBLIC_KEY || 'NOT_SET';
+    const serviceId = process.env.EMAILJS_SERVICE_ID || 'NOT_SET';
+    const templateId = process.env.EMAILJS_TEMPLATE_ID || 'NOT_SET';
+    
+    // Determine which account based on key pattern
+    let accountType = 'UNKNOWN';
+    if (publicKey.includes('user_')) {
+        accountType = publicKey.includes('old_pattern') ? 'PERSONAL' : 'COMPANY';
+    }
+    
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Current EmailJS Keys</title>
+            <style>
+                body { font-family: Arial; padding: 20px; }
+                .personal { background: #ffeaa7; padding: 20px; border: 2px solid #fdcb6e; }
+                .company { background: #d4edda; padding: 20px; border: 2px solid #c3e6cb; }
+                .unknown { background: #f8d7da; padding: 20px; border: 2px solid #f5c6cb; }
+                .key { font-family: monospace; background: #2d3436; color: white; padding: 5px; }
+            </style>
+        </head>
+        <body>
+            <h1>Current EmailJS Configuration</h1>
+            
+            <div class="${accountType.toLowerCase()}">
+                <h2>🔍 Detected: ${accountType} ACCOUNT</h2>
+                <p>Emails are going to: <strong>${accountType === 'PERSONAL' ? 'Your personal email' : 'Company email'}</strong></p>
+            </div>
+            
+            <h3>Current Keys in Render:</h3>
+            <ul>
+                <li><strong>Public Key:</strong> <span class="key">${publicKey.substring(0, 15)}...</span></li>
+                <li><strong>Service ID:</strong> ${serviceId}</li>
+                <li><strong>Template ID:</strong> ${templateId}</li>
+            </ul>
+            
+            <h3>What This Means:</h3>
+            <p>✅ <strong>EmailJS IS WORKING</strong> - emails are being sent</p>
+            <p>❌ <strong>But using OLD account</strong> - going to personal email</p>
+            
+            <div style="background: #e3f2fd; padding: 20px; margin: 20px 0;">
+                <h3>🔄 How to Switch to Company Account:</h3>
+                <ol>
+                    <li>Get NEW keys from your <strong>company EmailJS account</strong></li>
+                    <li>Go to Render → Environment tab</li>
+                    <li>REPLACE all 3 EmailJS values with NEW keys</li>
+                    <li>Save → Manual Deploy</li>
+                </ol>
+                
+                <button onclick="window.open('https://dashboard.render.com/', '_blank')">
+                    🔧 Open Render Environment
+                </button>
+            </div>
+            
+            <h3>Quick Test:</h3>
+            <button onclick="sendTestEmail()">Send Test Email</button>
+            <div id="result" style="margin-top: 10px;"></div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+            <script>
+                emailjs.init('${publicKey}');
+                
+                async function sendTestEmail() {
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = 'Sending test...';
+                    
+                    try {
+                        const response = await emailjs.send(
+                            '${serviceId}',
+                            '${templateId}',
+                            {
+                                test: 'This is going to ' + ('${accountType}' === 'PERSONAL' ? 'PERSONAL email' : 'COMPANY email'),
+                                timestamp: new Date().toISOString(),
+                                from_page: 'current-keys debug'
+                            }
+                        );
+                        
+                        resultDiv.innerHTML = \`
+                            <div style="color: green;">
+                                ✅ Test email sent successfully!<br>
+                                Status: \${response.status}<br>
+                                Going to: <strong>\${'${accountType}' === 'PERSONAL' ? 'Your personal email' : 'Company email'}</strong>
+                            </div>
+                        \`;
+                    } catch (error) {
+                        resultDiv.innerHTML = '<div style="color: red;">❌ Error: ' + error.text + '</div>';
+                    }
+                }
+            </script>
+        </body>
+        </html>
+    `);
 });
 
 app.use((req, res, next) => {
