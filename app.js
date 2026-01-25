@@ -1,4 +1,28 @@
-require('dotenv').config();
+// REMOVE dotenv completely - Render doesn't need it
+console.log('🚀 Starting app WITHOUT dotenv');
+console.log('🔍 Checking Render environment variables:');
+
+// List ALL environment variables (for debugging)
+const emailjsVars = Object.keys(process.env).filter(key => 
+    key.includes('EMAILJS') || key.includes('KEY') || key.includes('SECRET')
+);
+
+console.log('📋 Found these EmailJS-related env vars:', emailjsVars);
+
+// Check critical variables
+const criticalVars = ['EMAILJS_PUBLIC_KEY', 'EMAILJS_SERVICE_ID', 'EMAILJS_TEMPLATE_ID'];
+criticalVars.forEach(varName => {
+    const value = process.env[varName];
+    console.log(`${varName}: ${value ? '✅ SET (' + value.substring(0, Math.min(10, value.length)) + '...)' : '❌ NOT SET'}`);
+});
+
+// Emergency fallback - If no env vars, show error
+if (!process.env.EMAILJS_PUBLIC_KEY) {
+    console.error('❌❌❌ CRITICAL ERROR: EMAILJS_PUBLIC_KEY is not set in Render environment!');
+    console.error('   Go to: https://dashboard.render.com/ -> bytetrovee -> Environment');
+    console.error('   Add: EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID');
+}
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer'); 
