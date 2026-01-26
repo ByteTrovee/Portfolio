@@ -17,43 +17,43 @@
 <div>
 <h3 class="font-bold text-text-light dark:text-text-dark mb-4">Services</h3>
 <ul class="space-y-2 text-sm">
-<li><a class="hover:text-primary" href="/web-development">Web Development</a></li>
-<li><a class="hover:text-primary" href="/mobile-development">Mobile Development</a></li>
-<li><a class="hover:text-primary" href="/ui-ux">UI/UX Design</a></li>
-<li><a class="hover:text-primary" href="/api-integration">API Integration</a></li>
-<li><a class="hover:text-primary" href="/devops">DevOps</a></li>
+<li>Web Development</li>
+<li>Mobile Development</li>
+<li>UI/UX Design</li>
+<li>API Integration</li>
+<li>DevOps</li>
 </ul>
 </div>
 
 <div>
 <h3 class="font-bold text-text-light dark:text-text-dark mb-4">Industries</h3>
 <ul class="space-y-2 text-sm">
-<li><a class="hover:text-primary" href="/healthcare">Healthcare</a></li>
-<li><a class="hover:text-primary" href="/education">Education</a></li>
-<li><a class="hover:text-primary" href="/ecommerce">E-commerce</a></li>
-<li><a class="hover:text-primary" href="/logistics">Logistics</a></li>
-<li><a class="hover:text-primary" href="/ai">AI</a></li>
+<li>Healthcare</li>
+<li>Education</li>
+<li>E-commerce</li>
+<li>Logistics</li>
+<li>AI</li>
 </ul>
 </div>
 
 <div>
 <h3 class="font-bold text-text-light dark:text-text-dark mb-4">Technology</h3>
 <ul class="space-y-2 text-sm">
-<li><a class="hover:text-primary" href="/react">React.Js</a></li>
-<li><a class="hover:text-primary" href="/node">Node.Js</a></li>
-<li><a class="hover:text-primary" href="/python">Python</a></li>
-<li><a class="hover:text-primary" href="/next">Next.Js</a></li>
-<li><a class="hover:text-primary" href="/typescript">TypeScript</a></li>
-<li><a class="hover:text-primary" href="/bootstrap">Bootstrap</a></li>
-<li><a class="hover:text-primary" href="/tailwind">Tailwind</a></li>
-<li><a class="hover:text-primary" href="/databases">MongoDB</a></li>
-<li><a class="hover:text-primary" href="/databases">PostgreSQL</a></li>
-<li><a class="hover:text-primary" href="/docker">Docker</a></li>
+<li>React.Js</li>
+<li>Node.Js</li>
+<li>Python</li>
+<li>Next.Js</li>
+<li>TypeScript</li>
+<li>Bootstrap</li>
+<li>TailwindCSS</li>
+<li>MongoDB</li>
+<li>PostgreSQL</li>
+<li>Docker</li>
 </ul>
 </div>
 </div>
 <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row items-center justify-between">
-<p class="text-sm text-center md:text-left">© 2025 ByteTrovee. All rights reserved.</p>
+<p class="text-sm text-center md:text-left">&copy <span id="currentYear"></span> ByteTrovee. All rights reserved.</p>
 <div class="flex space-x-4 mt-4 md:mt-0">
 <a aria-label="Instagram" class="hover:text-primary transition-colors" href="https://www.instagram.com/bytetrovee?igsh=eWJ3aDZqd2poM3A2">
   <svg aria-hidden="true" class="size-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -67,4 +67,7 @@
 <span class="material-symbols-outlined">arrow_upward</span>
 </a>
 </div>
+<script>
+document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
 </footer>
