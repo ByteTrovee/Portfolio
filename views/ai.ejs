@@ -101,11 +101,6 @@
             <p class="text-sm font-bold leading-normal tracking-[0.015em]">Our Solutions</p>
         </a>
         <a class="flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 flex-1 cursor-pointer"
-           :class="activeTab === 'casestudies' ? 'border-b-primary text-primary' : 'border-b-transparent text-gray-500 dark:text-gray-400'"
-           @click="activeTab = 'casestudies'">
-            <p class="text-sm font-bold leading-normal tracking-[0.015em]">Case Studies</p>
-        </a>
-        <a class="flex flex-col items-center justify-center border-b-[3px] pb-[13px] pt-4 flex-1 cursor-pointer"
            :class="activeTab === 'tech' ? 'border-b-primary text-primary' : 'border-b-transparent text-gray-500 dark:text-gray-400'"
            @click="activeTab = 'tech'">
             <p class="text-sm font-bold leading-normal tracking-[0.015em]">Our Tech</p>
@@ -133,30 +128,6 @@
                         <p class="text-gray-600 dark:text-gray-300 mt-1 text-sm">Challenge: Reduce manual effort and errors in generating quarterly financial reports.</p>
                         <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">Solution: Implemented an LLM-based system to automate data extraction and report generation.</p>
                         <p class="font-bold text-accent dark:text-blue-400 mt-3 text-sm">Result: Reduced reporting time by 80% and improved accuracy.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        
-        <div x-show="activeTab === 'casestudies'">
-            <div class="p-4 flex flex-col gap-4">
-                <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-secondary/30 dark:bg-background-dark/50 overflow-hidden">
-                    <img class="h-40 w-full object-cover" data-alt="E-commerce analytics dashboard" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500"/>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg text-text-primary dark:text-white">E-commerce Platform Scaling</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mt-1 text-sm">Challenge: Handle 500% traffic growth during holiday season.</p>
-                        <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">Solution: Implemented microservices architecture and auto-scaling infrastructure.</p>
-                        <p class="font-bold text-accent dark:text-blue-400 mt-3 text-sm">Result: Zero downtime during peak traffic, handled 10k concurrent users.</p>
-                    </div>
-                </div>
-                <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-secondary/30 dark:bg-background-dark/50 overflow-hidden">
-                    <img class="h-40 w-full object-cover" data-alt="Healthcare mobile app interface" src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=500"/>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg text-text-primary dark:text-white">Healthcare Mobile App</h3>
-                        <p class="text-gray-600 dark:text-gray-300 mt-1 text-sm">Challenge: Create HIPAA-compliant telemedicine platform.</p>
-                        <p class="text-gray-600 dark:text-gray-300 mt-2 text-sm">Solution: Built secure video conferencing with end-to-end encryption.</p>
-                        <p class="font-bold text-accent dark:text-blue-400 mt-3 text-sm">Result: 50k+ downloads, 4.8-star rating on app stores.</p>
                     </div>
                 </div>
             </div>
