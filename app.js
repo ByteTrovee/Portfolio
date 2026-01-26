@@ -101,7 +101,14 @@ app.get('/contact/error', (req, res) => {
     });
 });
 
-app.post('/quote', function(req, res){
+app.get('/quote', function(req, res){
+    res.render('quote', {
+        siteName: 'ByteTrovee',
+        supportEmail: 'bytetrovee@gmail.com',
+        emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY,
+        emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
+        emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
+    });
 });
 
 app.post('/quote', function(req, res){
