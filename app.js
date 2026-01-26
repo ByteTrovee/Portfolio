@@ -72,89 +72,25 @@ app.get('/ai', function(req, res){
 });
 
 app.get('/contact', function(req, res){
-    res.render('contact');
+    res.render('contact', {
+        siteName: 'ByteTrovee',
+        supportEmail: 'bytetrovee@gmail.com',
+        emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY || '',
+        emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',
+        emailjsContactTemplateId: process.env.EMAILJS_CONTACT_TEMPLATE_ID || '',
+        pageTitle: 'Contact Us'
+    });
 });
 
-// Contact form route - Use POST method in your HTML form
 app.post('/contact', async (req, res) => {
-    console.log('📨 Contact form submitted:', req.body);
-    
-    try {
-        const { name, email, subject, message } = req.body;
-
-        // Validation
-        if (!name || !email || !message) {
-            console.log('❌ Validation failed');
-            // Redirect to contact page with error
-            return res.redirect('/contact?error=Please fill in all required fields');
-        }
-
-        // Check environment variables
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            return res.redirect('/contact?error=Email service not configured');
-        }
-
-        // Create transporter
-        const transporter = nodemailer.createTransport({
-            host: process.env.EMAIL_HOST,
-            port: process.env.EMAIL_PORT || 465,
-            secure: true, // CRITICAL: use SSL
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-
-        // Test connection
-        await transporter.verify();
-
-        // Email options
-        const mailOptions = {
-            from: `"${name}" <${email}>`,
-            to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
-            subject: `New Contact: ${subject || 'No Subject'}`,
-            text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject || 'No Subject'}\n\nMessage:\n${message}`,
-            html: `
-                <h3>New Contact Form Submission</h3>
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Subject:</strong> ${subject || 'No Subject'}</p>
-                <p><strong>Message:</strong></p>
-                <p>${message.replace(/\n/g, '<br>')}</p>
-            `
-        };
-
-        // Send email
-        await transporter.sendMail(mailOptions);
-        console.log('✅ Email sent successfully');
-
-        // REDIRECT to success page
-        res.redirect('/contact/success');
-
-    } catch (error) {
-        console.error('❌ Contact form error:', error.message);
-        
-        let errorMessage = 'Something went wrong. Please try again later.';
-        
-        if (error.code === 'EAUTH') {
-            errorMessage = 'Email authentication failed.';
-        } else if (error.message.includes('Invalid login')) {
-            errorMessage = 'Invalid email credentials.';
-        }
-        
-        // REDIRECT to error page
-        res.redirect('/contact/error?message=' + encodeURIComponent(errorMessage));
-    }
 });
 
-// Success page route
 app.get('/contact/success', (req, res) => {
     res.render('contactsuccess', {
         title: 'Message Sent Successfully'
     });
 });
 
-// Error page route
 app.get('/contact/error', (req, res) => {
     const errorMessage = req.query.message || 'An unexpected error occurred.';
     
@@ -165,56 +101,27 @@ app.get('/contact/error', (req, res) => {
     });
 });
 
-app.get('/quote', function(req, res){
-    res.render('quote', {  // <-- FIXED: Remove the ) after 'quote'
-        siteName: 'ByteTrovee',
-        supportEmail: 'bytetrovee@gmail.com',
-        emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY,
-        emailjsServiceId: process.env.EMAILJS_SERVICE_ID,
-        emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID,
-    });  // <-- Closing ) goes HERE
+app.post('/quote', function(req, res){
 });
 
-// Quote form submission route
-// In your quote route, add logging
-app.get('/quote', function(req, res){
+app.post('/quote', function(req, res){
     const publicKey = process.env.EMAILJS_PUBLIC_KEY || '';
-    
-    console.log('📧 QUOTE ROUTE - EmailJS Account:');
-    console.log('   Public Key:', publicKey ? publicKey.substring(0, 15) + '...' : 'NOT SET');
-    console.log('   Service ID:', process.env.EMAILJS_SERVICE_ID || 'NOT SET');
-    console.log('   Template ID:', process.env.EMAILJS_TEMPLATE_ID || 'NOT SET');
-    console.log('   Key length:', publicKey.length);
-    console.log('   Looks like:', publicKey.startsWith('user_') ? 'EmailJS key' : 'Unknown format');
-    
-    // Detect if it's old or new account
-    if (publicKey.includes('your_old_key_pattern')) {
-        console.log('   ⚠️  Using OLD personal account!');
-    }
     
     res.render('quote', {
         siteName: 'ByteTrovee',
-        supportEmail: 'hello@bytetrovee.com',
+        supportEmail: 'bytetrovee@GMAIL.com',
         emailjsPublicKey: publicKey,
         emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',
         emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID || '',
-        
-        // Add account info for debugging
-        accountInfo: {
-            keySet: !!publicKey,
-            keyPreview: publicKey ? publicKey.substring(0, 10) + '...' : 'none'
-        }
     });
 });
 
-// Quote success page
 app.get('/quote/success', (req, res) => {
     res.render('quote-success', {
         title: 'Quote Request Submitted'
     });
 });
 
-// Quote error page
 app.get('/quote/error', (req, res) => {
     res.render('quote-error', {
         title: 'Error Submitting Quote',
@@ -230,7 +137,6 @@ app.get('/pricing/project-based', function(req, res){
     res.render('projectbased');
 });
 
-// Multi-step form submission route
 app.post('/pricing/project-based', async (req, res) => {
     console.log('📋 Project inquiry submitted:', req.body);
     
@@ -246,169 +152,6 @@ app.post('/pricing/project-based', async (req, res) => {
             projectTitle,
             description
         } = req.body;
-
-        // Validation - check required fields
-        if (!fullName || !email || !projectType || !budget || !description) {
-            console.log('❌ Validation failed - missing required fields');
-            return res.status(400).json({
-                success: false,
-                message: 'Please fill in all required fields'
-            });
-        }
-
-        // Check if email service is configured
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            console.log('❌ Email service not configured');
-            return res.status(500).json({
-                success: false,
-                message: 'Service temporarily unavailable'
-            });
-        }
-
-        // Create email transporter
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS
-            }
-        });
-
-        // Format budget for display
-        const budgetLabels = {
-            '1k-5k': '$1,000 - $5,000',
-            '5k-15k': '$5,000 - $15,000',
-            '15k-30k': '$15,000 - $30,000',
-            '30k-50k': '$30,000 - $50,000',
-            '50k+': '$50,000+'
-        };
-
-        // Format timeline for display
-        const timelineLabels = {
-            'asap': 'ASAP',
-            '1-3months': '1-3 months',
-            '3-6months': '3-6 months',
-            '6months+': '6+ months',
-            'flexible': 'Flexible'
-        };
-
-        const formattedBudget = budgetLabels[budget] || budget;
-        const formattedTimeline = timelineLabels[timeline] || timeline;
-
-        // Create the email content
-        const mailOptions = {
-            from: `"${fullName}" <${email}>`,
-            to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
-            subject: `🎯 New Project Inquiry: ${projectTitle || projectType}`,
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #135bec; border-bottom: 2px solid #135bec; padding-bottom: 10px;">🎯 New Project Inquiry</h2>
-                    
-                    <!-- Contact Information -->
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="color: #333; margin-bottom: 15px;">👤 Contact Information</h3>
-                        <p><strong>Full Name:</strong> ${fullName}</p>
-                        <p><strong>Email:</strong> ${email}</p>
-                        <p><strong>Company:</strong> ${companyName || 'Not provided'}</p>
-                        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-                    </div>
-
-                    <!-- Project Details -->
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="color: #333; margin-bottom: 15px;">📊 Project Details</h3>
-                        <p><strong>Project Type:</strong> ${projectType}</p>
-                        <p><strong>Project Title:</strong> ${projectTitle || 'Not provided'}</p>
-                        <p><strong>Budget Range:</strong> ${formattedBudget}</p>
-                        <p><strong>Timeline:</strong> ${formattedTimeline}</p>
-                    </div>
-
-                    <!-- Project Description -->
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                        <h3 style="color: #333; margin-bottom: 15px;">📝 Project Description</h3>
-                        <div style="background: white; padding: 15px; border-radius: 5px; border-left: 4px solid #135bec;">
-                            ${description.replace(/\n/g, '<br>')}
-                        </div>
-                    </div>
-
-                    <p style="color: #666; font-size: 12px; margin-top: 20px; text-align: center;">
-                        Submitted: ${new Date().toLocaleString()}
-                    </p>
-                </div>
-            `,
-            text: `
-                NEW PROJECT INQUIRY
-                ===================
-                
-                CONTACT INFORMATION
-                -------------------
-                Full Name: ${fullName}
-                Email: ${email}
-                Company: ${companyName || 'Not provided'}
-                Phone: ${phone || 'Not provided'}
-                
-                PROJECT DETAILS
-                ---------------
-                Project Type: ${projectType}
-                Project Title: ${projectTitle || 'Not provided'}
-                Budget Range: ${formattedBudget}
-                Timeline: ${formattedTimeline}
-                
-                PROJECT DESCRIPTION
-                ------------------
-                ${description}
-                
-                ===================
-                Submitted: ${new Date().toLocaleString()}
-            `
-        };
-
-        // Send the email
-        await transporter.sendMail(mailOptions);
-        console.log('✅ Project inquiry email sent successfully');
-
-        // Send confirmation email to client
-        const clientMailOptions = {
-            from: process.env.CONTACT_EMAIL,
-            to: email,
-            subject: '✅ Project Inquiry Received - ByteTrovee',
-            html: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                    <h2 style="color: #135bec;">Thank You for Your Project Inquiry!</h2>
-                    
-                    <p>Hi <strong>${fullName}</strong>,</p>
-                    
-                    <p>We've received your project inquiry for <strong>${projectTitle || projectType}</strong> and are excited to learn more about your vision.</p>
-
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                        <h3 style="color: #333; margin-bottom: 10px;">📋 Inquiry Summary</h3>
-                        <p><strong>Project Type:</strong> ${projectType}</p>
-                        <p><strong>Budget Range:</strong> ${formattedBudget}</p>
-                        <p><strong>Timeline:</strong> ${formattedTimeline}</p>
-                    </div>
-
-                    <p><strong>Next Steps:</strong></p>
-                    <ul style="margin-left: 20px;">
-                        <li>Our team will review your requirements within 24 hours</li>
-                        <li>We'll contact you to schedule a discovery call</li>
-                        <li>You'll receive a detailed proposal with timeline and cost breakdown</li>
-                    </ul>
-
-                    <p>In the meantime, feel free to explore our <a href="https://bytrovee.com/portfolio" style="color: #135bec;">portfolio</a> to see similar projects we've delivered.</p>
-
-                    <p>Best regards,<br>
-                    <strong>The ByteTrovee Team</strong></p>
-                </div>
-            `
-        };
-
-        await transporter.sendMail(clientMailOptions);
-        console.log('✅ Confirmation email sent to client');
-
-        // Return success response
-        res.status(200).json({
-            success: true,
-            message: 'Project inquiry submitted successfully! We\'ll contact you within 24 hours.'
-        });
 
     } catch (error) {
         console.error('❌ Project inquiry error:', error.message);
@@ -442,103 +185,6 @@ app.get('/case-study/:id', (req, res) => {
         title: `${project.title} - Case Study`,
         project: project
     });
-});
-
-app.get('/current-keys', (req, res) => {
-    const publicKey = process.env.EMAILJS_PUBLIC_KEY || 'NOT_SET';
-    const serviceId = process.env.EMAILJS_SERVICE_ID || 'NOT_SET';
-    const templateId = process.env.EMAILJS_TEMPLATE_ID || 'NOT_SET';
-    
-    // Determine which account based on key pattern
-    let accountType = 'UNKNOWN';
-    if (publicKey.includes('user_')) {
-        accountType = publicKey.includes('old_pattern') ? 'PERSONAL' : 'COMPANY';
-    }
-    
-    res.send(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>Current EmailJS Keys</title>
-            <style>
-                body { font-family: Arial; padding: 20px; }
-                .personal { background: #ffeaa7; padding: 20px; border: 2px solid #fdcb6e; }
-                .company { background: #d4edda; padding: 20px; border: 2px solid #c3e6cb; }
-                .unknown { background: #f8d7da; padding: 20px; border: 2px solid #f5c6cb; }
-                .key { font-family: monospace; background: #2d3436; color: white; padding: 5px; }
-            </style>
-        </head>
-        <body>
-            <h1>Current EmailJS Configuration</h1>
-            
-            <div class="${accountType.toLowerCase()}">
-                <h2>🔍 Detected: ${accountType} ACCOUNT</h2>
-                <p>Emails are going to: <strong>${accountType === 'PERSONAL' ? 'Your personal email' : 'Company email'}</strong></p>
-            </div>
-            
-            <h3>Current Keys in Render:</h3>
-            <ul>
-                <li><strong>Public Key:</strong> <span class="key">${publicKey.substring(0, 15)}...</span></li>
-                <li><strong>Service ID:</strong> ${serviceId}</li>
-                <li><strong>Template ID:</strong> ${templateId}</li>
-            </ul>
-            
-            <h3>What This Means:</h3>
-            <p>✅ <strong>EmailJS IS WORKING</strong> - emails are being sent</p>
-            <p>❌ <strong>But using OLD account</strong> - going to personal email</p>
-            
-            <div style="background: #e3f2fd; padding: 20px; margin: 20px 0;">
-                <h3>🔄 How to Switch to Company Account:</h3>
-                <ol>
-                    <li>Get NEW keys from your <strong>company EmailJS account</strong></li>
-                    <li>Go to Render → Environment tab</li>
-                    <li>REPLACE all 3 EmailJS values with NEW keys</li>
-                    <li>Save → Manual Deploy</li>
-                </ol>
-                
-                <button onclick="window.open('https://dashboard.render.com/', '_blank')">
-                    🔧 Open Render Environment
-                </button>
-            </div>
-            
-            <h3>Quick Test:</h3>
-            <button onclick="sendTestEmail()">Send Test Email</button>
-            <div id="result" style="margin-top: 10px;"></div>
-            
-            <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-            <script>
-                emailjs.init('${publicKey}');
-                
-                async function sendTestEmail() {
-                    const resultDiv = document.getElementById('result');
-                    resultDiv.innerHTML = 'Sending test...';
-                    
-                    try {
-                        const response = await emailjs.send(
-                            '${serviceId}',
-                            '${templateId}',
-                            {
-                                test: 'This is going to ' + ('${accountType}' === 'PERSONAL' ? 'PERSONAL email' : 'COMPANY email'),
-                                timestamp: new Date().toISOString(),
-                                from_page: 'current-keys debug'
-                            }
-                        );
-                        
-                        resultDiv.innerHTML = \`
-                            <div style="color: green;">
-                                ✅ Test email sent successfully!<br>
-                                Status: \${response.status}<br>
-                                Going to: <strong>\${'${accountType}' === 'PERSONAL' ? 'Your personal email' : 'Company email'}</strong>
-                            </div>
-                        \`;
-                    } catch (error) {
-                        resultDiv.innerHTML = '<div style="color: red;">❌ Error: ' + error.text + '</div>';
-                    }
-                }
-            </script>
-        </body>
-        </html>
-    `);
 });
 
 app.use((req, res, next) => {
